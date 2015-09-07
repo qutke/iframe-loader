@@ -42,7 +42,7 @@ const createIframe = (config, callback) => {
   }
 }
 
-function parentMessage () {
+function ParentMessage () {
   let timer
   const setHeight = (height) => {
     window.top.postMessage({
@@ -145,7 +145,7 @@ if (config.type === 'parent') {
     })
   })
 } else {
-  parentScreen = new parentMessage()
+  parentScreen = new ParentMessage()
   parentScreen.auto()
 }
 
