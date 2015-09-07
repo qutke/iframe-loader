@@ -8,12 +8,15 @@
             background: #333;
             color:#880;
         }
-        p{line-height: 10px}
+        p{
+          line-height: 10px;
+        }
     </style>
 </head>
 <body>
 <div></div>
-<script type="application/javascript" src="../iframe-loader.js" config='{"type":"iframe"}'></script>
+
+<script src="./build/bundle.js" config='{"type":"iframe"}'></script>
 <script>
     setInterval(function(){
         var p=document.createElement("p");
