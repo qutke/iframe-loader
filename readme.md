@@ -7,11 +7,11 @@ iframe-loader(iframe加载器)
 
 ### usage(使用)
 + parent.html(父页面)
-```
+```html
 <script src="iframe-loader.js" config='{"type":"parent",src":"your url(iframe的网址)","style":{"width":"800px","height":"600px"},"renderTo":"myDiv","id":"myIframe"}'></script>
 ```
 + iframe.html(子页面)
-```
+```html
 <script src="iframe-loader.js" config='{"type":"iframe"}'></script>
 ```
 + load iframe-loader.js(加载iframe-loader.js)
