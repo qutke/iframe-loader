@@ -27,6 +27,9 @@
             },
             setHeight: function (iframe, data) {
                 addStyle(iframe, {height: data.height + "px"});
+            },
+            hello: function (iframe, data) {
+                console.log("connected!")
             }
         },//iframe监听的事件
         renderTo: script.parentElement,//iframe父元素
@@ -34,7 +37,7 @@
         type: "parent",
         whitelists:[]
     };
-    var oldTypes = { 2: "setHeight", 3: "toFull", 4: "unFull"};
+    var oldTypes = {1: "hello", 2: "setHeight", 3: "toFull", 4: "unFull"};
     if (script && script.attributes["config"]) {
         try {
             userConfig = JSON.parse(script.attributes["config"].value)
@@ -46,10 +49,12 @@
 
     //合并配置和默认配置
     Oextend(config, userConfig);
+    config.whitelists.push(parseURL(window.location.href).host,parseURL(config.src).host);
 
     //是父页面还是子页面
     if (config.type == "parent") {
         createIframe(config, function () {
+            document.getElementById(config.id).contentWindow.postMessage('hello', '*');
             //iframe onload后创建事件监听
             actionListerer(function (e) {
                 if (oldTypes.hasOwnProperty(e.data.code))
@@ -106,23 +111,68 @@
         }
     }
 
+    //解析url
+    function parseURL(url) {
+        var a = document.createElement('a');
+        a.href = url;
+        return {
+            source: url,
+            protocol: a.protocol.replace(':', ''),
+            host: a.hostname,
+            port: a.port || '80',
+            query: a.search,
+            params: (function () {
+                var ret = {},
+                    seg = a.search.replace(/^\?/, '').split('&'),
+                    len = seg.length, i = 0, s;
+                for (; i < len; i++) {
+                    if (!seg[i]) {
+                        continue;
+                    }
+                    s = seg[i].split('=');
+                    ret[s[0]] = s[1];
+                }
+                return ret;
+            })(),
+            file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+            hash: a.hash.replace('#', ''),
+            path: a.pathname.replace(/^([^\/])/, '/$1'),
+            relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+            segments: a.pathname.replace(/^\//, '').split('/')
+        };
+    }
+
     //与父页面通信对象
     function parentMessage() {
         var timer;
-        var handle = window.parent; // 事件句柄
+        var handle = null; // 事件句柄
+
+        //事件监听
+        actionListerer(function (event) {
+            if (config.whitelists.some(function(a){
+                    a=a+"$";
+                    return new RegExp(a).test(parseURL(event.origin).host)
+                })) {
+                handle = event;
+                if (event.data == 'hello') {
+                    console.log("Client connect %s", event.origin);
+                    event.source.postMessage({code: 1}, '*'); //握手协议
+                }
+            }
+        });
         var height = function (height) { //iframe高度
             var obj = {code: 2, height: height};
-            handle.postMessage(obj, '*');
+            handle.source.postMessage(obj, '*');
         };
 
         var tofull = function () {//iframe全屏
             var obj = {code: 3};
-            handle.postMessage(obj, '*');
+            handle.source.postMessage(obj, '*');
         };
 
         var unfull = function () {//iframe取消全屏
             var obj = {code: 4};
-            handle.postMessage(obj, '*');
+            handle.source.postMessage(obj, '*');
         };
         this.full = function () {
             if (timer) clearInterval(timer);
@@ -132,11 +182,11 @@
             if (timer) clearInterval(timer);
             var docheight = document.body.clientHeight;
             timer = setInterval(function () {
-                if ((document.body.clientHeight != docheight || full) && handle) {
+                if ((document.body.clientHeight || full) && handle) {
                     if (full)  unfull();
                     full = false;
-                    docheight =document.body.clientHeight;
-                    height(docheight + 40);
+                    docheight = document.body.clientHeight;
+                    height(docheight + 20);
                 }
             }, 100)
         };
