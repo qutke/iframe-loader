@@ -28,5 +28,6 @@ config='{"type":"parent",src":"your url（iframe的网址）","style":{"width":"800px
 + `config.id`,the iframe's id,default is QutkeIframe,if you want create two more iframes,id is needed（iframe 的id 默认是 QutkeIframe,多个iframe,id需设置）
 + `config.class`,the iframe's classname,default is null（iframe 的样式表名,默认是空）
 + `config.whitelists`,for security,the whitelists set hosts allowed in communication,default is parent and iframe'host（iframe安全设置,只有指定域的可以通信,默认为父页面和子页面的域） example ["a.com","b.com"]
+
 ### demos（例子）
 
