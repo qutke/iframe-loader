@@ -30,4 +30,6 @@ config='{"type":"parent",src":"your url（iframe的网址）","style":{"width":"800px
 + `config.whitelists`,for security,the whitelists set hosts allowed in communication,default is parent and iframe'host（iframe安全设置,只有指定域的可以通信,默认为父页面和子页面的域） example ["a.com","b.com"]
 
 ### demos（例子）
++ (demos/index.html)[full screen]
++ (demos/parent.html)[height]
 
