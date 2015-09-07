@@ -2,7 +2,7 @@ iframe-loader(iframe加载器)
 ==============================
 ### functions(功能)
 + create an  iframe according config(根据配置动态创建iframe)
-+ support the iframe communicates with its father page cross domain(支持iframe和父页面跨域通信(全屏、高度自适应、滚动监听等)
++ the iframe communicates with its father page,cross domain supported(支持iframe和父页面跨域通信(全屏、高度自适应、滚动监听等)
 + use html5 method postMessage
 
 ### usage(使用)
@@ -16,16 +16,16 @@ iframe-loader(iframe加载器)
 ```
 + load iframe-loader.js(加载iframe-loader.js)
 + set the config attribute(设置配置属性)
-+ config is a standard json code that will be parsed by JSON.parse,so it was wraped by single quotation marks(config是一段标准json格式，所以用单引号包裹)
++ config is a standard json code that will be parsed by JSON.parse,so it was wraped by single quotation marks(config是一段标准json格式,所以用单引号包裹)
 
 ### arguments(设置参数)
-+ config.type,the script is run on parent or iframe page,default is parent(脚本运行在父页面还是子页面，默认为父页面)
-+ config.src,the iframe url(iframe的网址)
-+ config.style ,the iframe style,default is {width: "800px", height: "600px", border: 0, padding: 0, margin: 0}(style是json格式)
-+ config.renderTo ,where the iframe insert,default is th scrip's parent, if set it should be  a dom id (默认是script的父元素，若设置必须是某个dom的id)
-+ config.id,the iframe's id,default is QutkeIframe,if you want create two more iframes,id is needed(iframe 的id 默认是 QutkeIframe，多个iframe,id需设置)
-+ config.class,the iframe's classname,default is null(iframe 的样式表名，默认是空)
-+ config.whitelists,for security the whitelists set  hosts allowed in communication,default is parent and iframe'host(iframe安全设置，只有指定域的可以通信，默认为父页面和子页面的域) example ["a.com","b.com"]
++ `config.type`,the script is run on parent or iframe page,default is parent(脚本运行在父页面还是子页面,默认为父页面)
++ `config.src`,the iframe url(iframe的网址)
++ `config.style` ,the iframe style,default is {"width": "800px", "height": "600px", "border"": 0,"padding": 0, "margin"": 0}(style是json格式)
++ `config.renderTo` ,where the iframe insert,default is th scrip's parent, if set it should be  a dom id (默认是script的父元素,若设置必须是某个dom的id)
++ `config.id`,the iframe's id,default is QutkeIframe,if you want create two more iframes,id is needed(iframe 的id 默认是 QutkeIframe,多个iframe,id需设置)
++ `config.class`,the iframe's classname,default is null(iframe 的样式表名,默认是空)
++ `config.whitelists`,for security the whitelists set  hosts allowed in communication,default is parent and iframe'host(iframe安全设置,只有指定域的可以通信,默认为父页面和子页面的域) example ["a.com","b.com"]
 ### demos(例子)
 + 高度、全屏自适应()[]
 + 高度、全屏自适应()[]
