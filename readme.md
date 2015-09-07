@@ -1,35 +1,36 @@
-iframe-loader£¨iframe¼ÓÔØÆ÷£©
+iframe-loaderï¼ˆiframeåŠ è½½å™¨ï¼‰
 ==============================
-### functions£¨¹¦ÄÜ£©
-+ create an  iframe according config£¨¸ù¾İÅäÖÃ¶¯Ì¬´´½¨iframe£©
-+ the iframe communicates with its father page,cross domain supported£¨Ö§³ÖiframeºÍ¸¸Ò³Ãæ¿çÓòÍ¨ĞÅ£¨È«ÆÁ¡¢¸ß¶È×ÔÊÊÓ¦¡¢¹ö¶¯¼àÌıµÈ£©
+### functionsï¼ˆåŠŸèƒ½ï¼‰
++ create an  iframe according configï¼ˆæ ¹æ®é…ç½®åŠ¨æ€åˆ›å»ºiframeï¼‰
++ the iframe communicates with its father page,cross domain supportedï¼ˆæ”¯æŒiframeå’Œçˆ¶é¡µé¢è·¨åŸŸé€šä¿¡ï¼ˆå…¨å±ã€é«˜åº¦è‡ªé€‚åº”ã€æ»šåŠ¨ç›‘å¬ç­‰ï¼‰
 + use html5 method postMessage
 
-### how to use£¨Ê¹ÓÃ£©
-+ parent.html£¨¸¸Ò³Ãæ£©
+### how to useï¼ˆä½¿ç”¨ï¼‰
++ parent.htmlï¼ˆçˆ¶é¡µé¢ï¼‰
 ```html
 <script src="iframe-loader.js"
-config='{"type":"parent",src":"your url£¨iframeµÄÍøÖ·£©","style":{"width":"800px","height":"600px"},"renderTo":"myDiv","id":"myIframe"}'>
+config='{"type":"parent",src":"your urlï¼ˆiframeçš„ç½‘å€ï¼‰","style":{"width":"800px","height":"600px"},"renderTo":"myDiv","id":"myIframe"}'>
 </script>
 ```
-+ iframe.html£¨×ÓÒ³Ãæ£©
++ iframe.htmlï¼ˆå­é¡µé¢ï¼‰
 ```html
 <script src="iframe-loader.js" config='{"type":"iframe"}'></script>
 ```
-+ load iframe-loader.js£¨¼ÓÔØiframe-loader.js£©
-+ set the config attribute£¨ÉèÖÃÅäÖÃÊôĞÔ£©
-+ config is a standard json code that will be parsed by JSON.parse,so it was wraped by single quotation marks£¨configÊÇÒ»¶Î±ê×¼json¸ñÊ½,ËùÒÔÓÃµ¥ÒıºÅ°ü¹ü£©
++ load iframe-loader.jsï¼ˆåŠ è½½iframe-loader.jsï¼‰
++ set the config attributeï¼ˆè®¾ç½®é…ç½®å±æ€§ï¼‰
++ config is a standard json code that will be parsed by JSON.parse,so it was wraped by single quotation marksï¼ˆconfigæ˜¯ä¸€æ®µæ ‡å‡†jsonæ ¼å¼,æ‰€ä»¥ç”¨å•å¼•å·åŒ…è£¹ï¼‰
 
-### config={}£¨ÉèÖÃ²ÎÊı£©
-+ `config.type`,the script is run on parent or iframe page,default is parent£¨½Å±¾ÔËĞĞÔÚ¸¸Ò³Ãæ»¹ÊÇ×ÓÒ³Ãæ,Ä¬ÈÏÎª¸¸Ò³Ãæ£©
-+ `config.src`,the iframe url£¨iframeµÄÍøÖ·£©
-+ `config.style` ,the iframe style,default is {"width": "800px", "height": "600px", "border"": 0,"padding": 0, "margin"": 0}£¨styleÊÇjson¸ñÊ½£©
-+ `config.renderTo` ,where the iframe insert,default is th scrip's parent, if set it should be  a dom id £¨Ä¬ÈÏÊÇscriptµÄ¸¸ÔªËØ,ÈôÉèÖÃ±ØĞëÊÇÄ³¸ödomµÄid£©
-+ `config.id`,the iframe's id,default is QutkeIframe,if you want create two more iframes,id is needed£¨iframe µÄid Ä¬ÈÏÊÇ QutkeIframe,¶à¸öiframe,idĞèÉèÖÃ£©
-+ `config.class`,the iframe's classname,default is null£¨iframe µÄÑùÊ½±íÃû,Ä¬ÈÏÊÇ¿Õ£©
-+ `config.whitelists`,for security,the whitelists set hosts allowed in communication,default is parent and iframe'host£¨iframe°²È«ÉèÖÃ,Ö»ÓĞÖ¸¶¨ÓòµÄ¿ÉÒÔÍ¨ĞÅ,Ä¬ÈÏÎª¸¸Ò³ÃæºÍ×ÓÒ³ÃæµÄÓò£© example ["a.com","b.com"]
+### config={}ï¼ˆè®¾ç½®å‚æ•°ï¼‰
+>
++ `config.type`,the script is run on parent or iframe page,default is parentï¼ˆè„šæœ¬è¿è¡Œåœ¨çˆ¶é¡µé¢è¿˜æ˜¯å­é¡µé¢,é»˜è®¤ä¸ºçˆ¶é¡µé¢ï¼‰
++ `config.src`,the iframe urlï¼ˆiframeçš„ç½‘å€ï¼‰
++ `config.style` ,the iframe style,default is {"width": "800px", "height": "600px", "border"": 0,"padding": 0, "margin"": 0}ï¼ˆstyleæ˜¯jsonæ ¼å¼ï¼‰
++ `config.renderTo` ,where the iframe insert,default is th scrip's parent, if set it should be  a dom id ï¼ˆé»˜è®¤æ˜¯scriptçš„çˆ¶å…ƒç´ ,è‹¥è®¾ç½®å¿…é¡»æ˜¯æŸä¸ªdomçš„idï¼‰
++ `config.id`,the iframe's id,default is QutkeIframe,if you want create two more iframes,id is neededï¼ˆiframe çš„id é»˜è®¤æ˜¯ QutkeIframe,å¤šä¸ªiframe,idéœ€è®¾ç½®ï¼‰
++ `config.class`,the iframe's classname,default is nullï¼ˆiframe çš„æ ·å¼è¡¨å,é»˜è®¤æ˜¯ç©ºï¼‰
++ `config.whitelists`,for security,the whitelists set hosts allowed in communication,default is parent and iframe'hostï¼ˆiframeå®‰å…¨è®¾ç½®,åªæœ‰æŒ‡å®šåŸŸçš„å¯ä»¥é€šä¿¡,é»˜è®¤ä¸ºçˆ¶é¡µé¢å’Œå­é¡µé¢çš„åŸŸï¼‰ example ["a.com","b.com"]
 
-### demos£¨Àı×Ó£©
+### demosï¼ˆä¾‹å­ï¼‰
 + [full screen](http://21k.github.io/iframe-loader/demos/index.htm)
 + [height](http://21k.github.io/iframe-loader/demos/parent.html)
 
