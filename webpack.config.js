@@ -16,9 +16,9 @@ if (DEBUG) {
   ]
   plugins = [new webpack.HotModuleReplacementPlugin()]
   output = {
-    path: path.join(__dirname, 'dist/build'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/build/'
+    publicPath: '/dist/'
   }
 } else {
   devtool = false
@@ -35,9 +35,9 @@ if (DEBUG) {
     new webpack.NoErrorsPlugin()
   ]
   output = {
-    path: path.join(__dirname, 'dist/build'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/build/'
+    publicPath: '/dist/'
   }
 }
 

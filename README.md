@@ -42,3 +42,13 @@ iframe-loader（iframe加载器）
 * [full screen](http://21k.github.io/iframe-loader/demos/index.htm)
 * [height](http://21k.github.io/iframe-loader/demos/parent.html)
 
+### Installation
+
+```bash
+# 安装
+npm install
+# 调试
+npm start
+# build生成release文件
+npm run build
+```

@@ -2,9 +2,11 @@
   "name": "iframe-loader",
   "version": "0.1.0",
   "description": "iframe, postmessage",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "npm run clean && NODE_ENV=release webpack --config webpack.config.js --color",
+    "clean": "rm -rf dist/"
   },
   "repository": "https://github.com/qutke/iframe-loader",
   "dependencies": {
